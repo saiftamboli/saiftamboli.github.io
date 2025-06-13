@@ -1,92 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saif Tamboli | Power BI Portfolio</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      padding: 40px;
-      background-color: #f4f6f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
       color: #333;
     }
-
+    header {
+      background-color: #20232a;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+    }
     h1 {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
-
-    p.intro {
-      text-align: center;
-      font-size: 1.1rem;
-      margin-bottom: 50px;
+    .container {
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
     }
-
-    .dashboard {
-      margin-bottom: 60px;
-    }
-
-    h2 {
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: 1px solid #ccc;
+    .project {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-
-    a.repo-link {
+    .project h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .project p {
+      font-size: 15px;
+    }
+    .project a {
       display: inline-block;
-      margin-top: 8px;
-      color: #007acc;
+      margin-top: 10px;
       text-decoration: none;
+      color: white;
+      background-color: #007acc;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s;
     }
-
-    footer {
-      margin-top: 80px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
+    .project a:hover {
+      background-color: #005fa3;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Saif Tamboli's Power BI Portfolio</h1>
+    <p>Showcasing data-driven dashboards built with Power BI, SQL, and Excel</p>
+  </header>
+  <div class="container">
+    <div class="project">
+      <h2>1. Sting Energy Drink – Marketing Analytics Dashboard</h2>
+      <p>A comprehensive marketing analytics project that uncovers key consumer insights and strategic opportunities for Sting Energy Drink in the Indian market.</p>
+      <a href="https://saiftamboli.github.io/Marketing-Analytics-Dashboard-for-Sting-Energy-Drink/" target="_blank">View Project</a>
+    </div>
 
-  <h1>📊 Saif Tamboli's Power BI Portfolio</h1>
-  <p class="intro">Explore my interactive dashboards built with Power BI, visualizing data-driven insights across various domains.</p>
+    <div class="project">
+      <h2>2. Bank Customer Churn Analysis</h2>
+      <p>This project focuses on analyzing bank customer churn, also known as customer attrition, using SQL and Power BI.</p>
+      <a href="https://saiftamboli.github.io/Bank-Customer-Churn-Analysis/" target="_blank">View Project</a>
+    </div>
 
-  <!-- Dashboard 1 -->
-  <div class="dashboard">
-    <h2>1. Student Spending Analysis</h2>
-    <p>A dashboard analyzing student expenses across key categories.</p>
-    <iframe 
-      title="Student Spending Analysis"
-      src="https://app.powerbi.com/view?r=eyJrIjoiMDEwNjQyMDAtNzAxNC00MTdiLWE1NTEtYTkyODUzZjQxZDFlIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9"
-      allowFullScreen="true">
-    </iframe>
-    <a class="repo-link" href="https://github.com/saiftamboli/portfolio-site" target="_blank">🔗 View on GitHub</a>
+    <div class="project">
+      <h2>3. Hospital Analytics Dashboard</h2>
+      <p>A comprehensive Power BI dashboard for hospital management, providing real-time insights into patient records, doctor performance, financial metrics, and hospital operations.</p>
+      <a href="https://saiftamboli.github.io/Hospital-Analytics-Dashboard/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project">
+      <h2>4. Apollo Hospitals - Patient Emergency Room Visits Analysis</h2>
+      <p>This Power BI dashboard provides a comprehensive analysis of patient emergency room visits at Apollo Hospitals, offering valuable insights into key healthcare metrics. This project showcases proficiency in data importing, cleaning, DAX calculations, and visualisation techniques within Power BI.</p>
+      <a href="https://saiftamboli.github.io/Apollo-Hospitals-Patient-Emergency-Room-Analytics-Dashboard/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project">
+      <h2>5. Interactive Sales Dashboard for New Product Launch</h2>
+      <p>Interactive Power BI dashboard analyzing sales performance, product trends, and promotional impact during an early-stage product launch across regions and segments.</p>
+      <a href="https://saiftamboli.github.io/Interactive-Sales-Dashboard-for-New-Product-Launch/" target="_blank">View Project</a>
+    </div>
+
+    <div class="project">
+      <h2>6. Student Survey Analytics – Retail Spending Dashboard</h2>
+      <p>An interactive Power BI dashboard analysing student retail spending across store types, age groups, and product categories with visual insights and row-level security.</p>
+      <a href="https://saiftamboli.github.io/Student-Survey-Analytics-Retail-Spending-Dashboard/" target="_blank">View Project</a>
+    </div>
   </div>
-
-  <!-- Dashboard 2 -->
-  <div class="dashboard">
-    <h2>2. Sales Performance Dashboard</h2>
-    <p>Insights into regional sales trends and revenue growth.</p>
-    <iframe 
-      title="Sales Performance Dashboard"
-      src="https://app.powerbi.com/view?r=eyJrIjoiYTZkOWI0MWItY2U5MS00ZjkyLTkwNmUtMGE3ODFjZGRkMmIwIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9"
-      allowFullScreen="true">
-    </iframe>
-    <a class="repo-link" href="https://github.com/saiftamboli/airline-" target="_blank">🔗 View on GitHub</a>
-  </div>
-
-  <footer>
-    © 2025 Saif Tamboli · Built with 💡 and Power BI · <a href="https://github.com/saiftamboli" target="_blank">GitHub Profile</a>
-  </footer>
-
 </body>
 </html>
