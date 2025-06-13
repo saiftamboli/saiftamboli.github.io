@@ -2,198 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saif Tamboli | Power BI Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #007acc;
-      --hover-color: #005fa3;
-      --dark-bg: #20232a;
+      --bg-light: #f9f9f9;
+      --bg-dark: #121212;
+      --text-light: #333;
+      --text-dark: #f9f9f9;
+      --accent: #007acc;
+      --accent-hover: #005fa3;
     }
-
-    * {
-      box-sizing: border-box;
+    html {
+      scroll-behavior: smooth;
     }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
     }
-
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
     header {
-      background-color: var(--dark-bg);
+      background-color: #20232a;
       color: white;
       padding: 20px 40px;
       text-align: center;
     }
-
-    h1 {
-      margin-bottom: 5px;
-      font-size: 28px;
+    nav {
+      background-color: #282c34;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-
-    p {
-      margin: 5px 0;
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
     }
-
+    .theme-switch {
+      cursor: pointer;
+      color: white;
+    }
     .container {
-      padding: 30px 20px;
-      max-width: 1100px;
+      padding: 40px;
+      max-width: 1000px;
       margin: auto;
     }
-
     .project {
       background: white;
       padding: 20px;
       margin-bottom: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease forwards;
+      transform: translateY(30px);
+      transition: all 0.6s ease-in-out;
     }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .project.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-
     .project h2 {
-      font-size: 20px;
       margin-top: 0;
+      font-size: 20px;
     }
-
+    .project p {
+      font-size: 15px;
+    }
     iframe {
       width: 100%;
-      height: 450px;
+      height: 500px;
       border: none;
       margin-top: 10px;
-      border-radius: 8px;
     }
-
     .buttons {
       margin-top: 10px;
     }
-
     .buttons a {
       display: inline-block;
-      margin: 6px 8px 0 0;
-      padding: 10px 18px;
-      background-color: var(--primary-color);
+      margin-right: 10px;
+      padding: 8px 16px;
+      background-color: var(--accent);
       color: white;
       text-decoration: none;
       border-radius: 5px;
       font-size: 14px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
     }
-
     .buttons a:hover {
-      background-color: var(--hover-color);
-      transform: translateY(-2px);
+      background-color: var(--accent-hover);
     }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      .project h2 {
-        font-size: 18px;
-      }
-
-      iframe {
-        height: 350px;
-      }
-
-      .buttons a {
-        padding: 8px 14px;
-        font-size: 13px;
-      }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 15px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
     }
-
-    @media (max-width: 480px) {
-      iframe {
-        height: 300px;
-      }
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .loader div {
+      width: 40px;
+      height: 40px;
+      border: 5px solid #007acc;
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
+  <div class="loader"><div></div></div>
   <header>
     <h1>Saif Tamboli's Power BI Portfolio</h1>
     <p>Showcasing data-driven dashboards built with Power BI, SQL, and Excel</p>
   </header>
-  <div class="container">
-
-    <div class="project">
-      <h2>1. Sting Energy Drink – Marketing Analytics Dashboard</h2>
-      <p>A comprehensive marketing analytics project that uncovers key consumer insights and strategic opportunities for Sting Energy Drink in the Indian market.</p>
-      <div class="buttons">
-        <a href="https://saiftamboli.github.io/Marketing-Analytics-Dashboard-for-Sting-Energy-Drink/" target="_blank">View Project</a>
-        <a href="https://github.com/saiftamboli/Marketing-Analytics-Dashboard-for-Sting-Energy-Drink" target="_blank">View on GitHub</a>
-      </div>
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMjlhMGIxNzUtMTYwNC00MTY1LTg4YTItMDk5NTdmNDJlNmIwIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <nav>
+    <div><strong>Portfolio</strong></div>
+    <div>
+      <a href="#">Home</a>
+      <span class="theme-switch">🌓 Toggle Theme</span>
     </div>
-
+  </nav>
+  <div class="container" id="project-list">
     <div class="project">
-      <h2>2. Bank Customer Churn Analysis</h2>
-      <p>This project focuses on analyzing bank customer churn, also known as customer attrition, using SQL and Power BI.</p>
-      <div class="buttons">
-        <a href="https://saiftamboli.github.io/Bank-Customer-Churn-Analysis/" target="_blank">View Project</a>
-        <a href="https://github.com/saiftamboli/Bank-Customer-Churn-Analysis" target="_blank">View on GitHub</a>
-      </div>
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTIzZWYxNjQtNjAzMy00YWFiLWE5NzQtYzlmZjIyYWQwZTMyIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
-    </div>
+  <h2>Sting Energy Drink – Marketing Analytics Dashboard</h2>
+  <p>A marketing analytics project that uncovers key consumer insights and strategic opportunities for Sting Energy Drink in the Indian market.</p>
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMjlhMGIxNzUtMTYwNC00MTY1LTg4YTItMDk5NTdmNDJlNmIwIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <div class="buttons">
+    <a href="https://saiftamboli.github.io/Marketing-Analytics-Dashboard-for-Sting-Energy-Drink/" target="_blank">🔗 View Project</a>
+    <a href="https://github.com/saiftamboli/Marketing-Analytics-Dashboard-for-Sting-Energy-Drink" target="_blank">📁 GitHub Repo</a>
+  </div>
+</div>
 
-    <div class="project">
-      <h2>3. Hospital Analytics Dashboard</h2>
-      <p>A comprehensive Power BI dashboard for hospital management, providing real-time insights into patient records, doctor performance, financial metrics, and hospital operations.</p>
-      <div class="buttons">
-        <a href="https://saiftamboli.github.io/Hospital-Analytics-Dashboard/" target="_blank">View Project</a>
-        <a href="https://github.com/saiftamboli/Hospital-Analytics-Dashboard" target="_blank">View on GitHub</a>
-      </div>
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNTM0NGNiNTMtOTFjZi00OWRkLTgxZDktMGFhMDc3NDczMmU2IiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
-    </div>
+<div class="project">
+  <h2>Bank Customer Churn Analysis</h2>
+  <p>Analyzes customer attrition using SQL and Power BI with churn patterns, helping identify key factors behind customer drop-off.</p>
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTIzZWYxNjQtNjAzMy00YWFiLWE5NzQtYzlmZjIyYWQwZTMyIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <div class="buttons">
+    <a href="https://saiftamboli.github.io/Bank-Customer-Churn-Analysis/" target="_blank">🔗 View Project</a>
+    <a href="https://github.com/saiftamboli/Bank-Customer-Churn-Analysis" target="_blank">📁 GitHub Repo</a>
+  </div>
+</div>
 
-    <div class="project">
-      <h2>4. Apollo Hospitals - Patient Emergency Room Visits Analysis</h2>
-      <p>This Power BI dashboard provides a comprehensive analysis of patient emergency room visits at Apollo Hospitals, offering valuable insights into key healthcare metrics.</p>
-      <div class="buttons">
-        <a href="https://saiftamboli.github.io/Apollo-Hospitals-Patient-Emergency-Room-Analytics-Dashboard/" target="_blank">View Project</a>
-        <a href="https://github.com/saiftamboli/Apollo-Hospitals-Patient-Emergency-Room-Analytics-Dashboard" target="_blank">View on GitHub</a>
-      </div>
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTFjZTIzMzUtMmE3Zi00ZTM3LWFjZjEtNDE0MDY3MDdjNWZiIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
-    </div>
+<div class="project">
+  <h2>Hospital Analytics Dashboard</h2>
+  <p>Interactive dashboard with real-time insights into patient records, doctor performance, financials, and hospital operations.</p>
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNTM0NGNiNTMtOTFjZi00OWRkLTgxZDktMGFhMDc3NDczMmU2IiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS08MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <div class="buttons">
+    <a href="https://saiftamboli.github.io/Hospital-Analytics-Dashboard/" target="_blank">🔗 View Project</a>
+    <a href="https://github.com/saiftamboli/Hospital-Analytics-Dashboard" target="_blank">📁 GitHub Repo</a>
+  </div>
+</div>
 
-    <div class="project">
-      <h2>5. Interactive Sales Dashboard for New Product Launch</h2>
-      <p>Interactive Power BI dashboard analyzing sales performance, product trends, and promotional impact during an early-stage product launch across regions and segments.</p>
-      <div class="buttons">
-        <a href="https://saiftamboli.github.io/Interactive-Sales-Dashboard-for-New-Product-Launch/" target="_blank">View Project</a>
-        <a href="https://github.com/saiftamboli/Interactive-Sales-Dashboard-for-New-Product-Launch" target="_blank">View on GitHub</a>
-      </div>
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNzNmMTFhZTMtNWQ2Yi00ZTM0LTliMTctNjBiOTY3MjA0NDlhIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
-    </div>
+<div class="project">
+  <h2>Apollo Hospitals – Patient Emergency Room Analytics</h2>
+  <p>Power BI dashboard analyzing emergency room visit trends at Apollo Hospitals using DAX and data cleaning techniques.</p>
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiZTFjZTIzMzUtMmE3Zi00ZTM3LWFjZjEtNDE0MDY3MDdjNWZiIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <div class="buttons">
+    <a href="https://saiftamboli.github.io/Apollo-Hospitals-Patient-Emergency-Room-Analytics-Dashboard/" target="_blank">🔗 View Project</a>
+    <a href="https://github.com/saiftamboli/Apollo-Hospitals-Patient-Emergency-Room-Analytics-Dashboard" target="_blank">📁 GitHub Repo</a>
+  </div>
+</div>
 
-    <div class="project">
-      <h2>6. Student Survey Analytics – Retail Spending Dashboard</h2>
-      <p>An interactive Power BI dashboard analysing student retail spending across store types, age groups, and product categories with visual insights and row-level security.</p>
-      <div class="buttons">
-        <a href="https://saiftamboli.github.io/Student-Survey-Analytics-Retail-Spending-Dashboard/" target="_blank">View Project</a>
-        <a href="https://github.com/saiftamboli/Student-Survey-Analytics-Retail-Spending-Dashboard" target="_blank">View on GitHub</a>
-      </div>
-      <iframe src="https://app.powerbi.com/view?r=eyJrIjoiODQ5ZWZjNjYtNjA3My00MDUwLWEwZGMtZmY5MThjZmNjOTIwIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS04MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
-    </div>
+<div class="project">
+  <h2>Interactive Sales Dashboard for New Product Launch</h2>
+  <p>Analyzes regional sales trends, product category performance, and promotion impact for a new product launch.</p>
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiNzNmMTFhZTMtNWQ2Yi00ZTM0LTliMTctNjBiOTY3MjA0NDlhIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS08MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <div class="buttons">
+    <a href="https://saiftamboli.github.io/Interactive-Sales-Dashboard-for-New-Product-Launch/" target="_blank">🔗 View Project</a>
+    <a href="https://github.com/saiftamboli/Interactive-Sales-Dashboard-for-New-Product-Launch" target="_blank">📁 GitHub Repo</a>
+  </div>
+</div>
+
+<div class="project">
+  <h2>Student Survey Analytics – Retail Spending Dashboard</h2>
+  <p>Dashboard analyzing student retail spending behavior by product type, age group, and stores using Power BI row-level security.</p>
+  <iframe src="https://app.powerbi.com/view?r=eyJrIjoiODQ5ZWZjNjYtNjA3My00MDUwLWEwZGMtZmY5MThjZmNjOTIwIiwidCI6ImUwYzk0NGU4LWM5N2YtNGUwMS08MWUwLWRkMzZjZTk5YTgwYyJ9" allowFullScreen="true"></iframe>
+  <div class="buttons">
+    <a href="https://saiftamboli.github.io/Student-Survey-Analytics-Retail-Spending-Dashboard/" target="_blank">🔗 View Project</a>
+    <a href="https://github.com/saiftamboli/Student-Survey-Analytics-Retail-Spending-Dashboard" target="_blank">📁 GitHub Repo</a>
+  </div>
+</div>
 
   </div>
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script>
+    const projects = document.querySelectorAll('.project');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.project').forEach(proj => observer.observe(proj));
+
+    document.querySelector('.theme-switch').onclick = () => {
+      document.body.classList.toggle('dark');
+    };
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('load', () => {
+      document.querySelector('.loader').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
